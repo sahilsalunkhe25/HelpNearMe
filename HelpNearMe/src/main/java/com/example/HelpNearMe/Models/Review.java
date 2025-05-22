@@ -1,6 +1,7 @@
 package com.example.HelpNearMe.Models;
 
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import java.time.LocalDateTime;
 
@@ -14,9 +15,10 @@ public class Review {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "helper_id", nullable = false)
+    @JsonBackReference
     private Helper helper;
 
-    private String name;
+    private String name; // reviewers name
 
     @Column(nullable = false)
     private Integer rating;

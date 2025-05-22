@@ -1,0 +1,2 @@
+ALTER TABLE helpers
+ADD COLUMN numberofreports INTEGER DEFAULT 0;
