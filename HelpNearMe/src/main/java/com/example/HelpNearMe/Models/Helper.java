@@ -1,4 +1,5 @@
 package com.example.HelpNearMe.Models;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import java.time.LocalDateTime;
 import java.util.List;
@@ -45,7 +46,14 @@ public class Helper {
     private Integer ratingCount = 0;
 
     @OneToMany(mappedBy = "helper", cascade = CascadeType.ALL, orphanRemoval = true)
+    @JsonManagedReference
     private List<Review> reviews;
+
+    @Column(name = "town")
+    private String town;
+
+    @Column(name = "numberofreports")
+    private Integer numberOfReports = 0;
 
     // Getters and Setters
 
@@ -151,6 +159,22 @@ public class Helper {
 
     public void setReviews(List<Review> reviews) {
         this.reviews = reviews;
+    }
+
+    public String gettown() {
+        return this.town;
+    }
+
+    public void setTown(String town){
+        this.town = town;
+    }
+
+    public Integer getNumberOfReports() {
+        return numberOfReports;
+    }
+
+    public void setNumberOfReports(Integer report) {
+        this.numberOfReports = report;
     }
 
 }

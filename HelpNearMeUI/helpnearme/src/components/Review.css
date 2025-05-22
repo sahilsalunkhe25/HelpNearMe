@@ -1,0 +1,298 @@
+/* Modal Styles */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal-content {
+  background: white;
+  border-radius: 8px;
+  width: 90%;
+  max-width: 500px;
+  max-height: 90vh;
+  overflow-y: auto;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+  animation: modalFadeIn 0.3s ease-out;
+}
+
+.reviews-modal {
+  max-width: 600px;
+}
+
+@keyframes modalFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 20px;
+  border-bottom: 1px solid #eaeaea;
+}
+
+.modal-header h3 {
+  margin: 0;
+  color: #2c3e50;
+  font-weight: 600;
+}
+
+.close-btn {
+  background: none;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+  color: #7f8c8d;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+}
+
+.close-btn:hover {
+  background-color: #f8f9fa;
+  color: #34495e;
+}
+
+.modal-footer {
+  border-top: 1px solid #eaeaea;
+  padding: 15px 20px;
+  display: flex;
+  justify-content: flex-end;
+}
+
+/* Review Form Styles */
+.review-form {
+  padding: 20px;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 500;
+  color: #2c3e50;
+}
+
+.form-group input,
+.form-group textarea {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 16px;
+}
+
+.form-group textarea {
+  resize: vertical;
+  min-height: 80px;
+}
+
+.form-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: 25px;
+}
+
+.cancel-btn, 
+.submit-btn,
+.close-btn-footer {
+  padding: 10px 16px;
+  border-radius: 4px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.cancel-btn {
+  background-color: #f8f9fa;
+  border: 1px solid #ddd;
+  color: #2c3e50;
+  height: 40px;
+  margin-top: 25px;
+}
+
+.submit-btn {
+  background-color: #1a7556;
+  border: none;
+  color: white;
+}
+
+.close-btn-footer {
+  background-color: #f8f9fa;
+  border: 1px solid #ddd;
+  color: #2c3e50;
+}
+
+.cancel-btn:hover {
+  background-color: #e9ecef;
+}
+
+.submit-btn:hover {
+  background-color: #156349;
+}
+
+.submit-btn:disabled {
+  background-color: #a8d5ca;
+  cursor: not-allowed;
+}
+
+.error-message {
+  color: #e74c3c;
+  background-color: #fdf0ed;
+  padding: 10px;
+  border-radius: 4px;
+  margin-bottom: 15px;
+  font-size: 14px;
+}
+
+/* Star Rating Styles */
+.star-rating {
+  display: flex;
+  gap: 6px;
+  font-size: 24px;
+  line-height: 1;
+  margin: 5px 0;
+}
+
+.star {
+  color: #ddd;
+  transition: color 0.2s;
+}
+
+.star.filled {
+  color: #f39c12;
+}
+
+/* Reviews List Styles */
+.reviews-content {
+  padding: 20px;
+}
+
+.loading-text, 
+.error-text, 
+.no-reviews {
+  text-align: center;
+  padding: 20px;
+  color: #7f8c8d;
+}
+
+.error-text {
+  color: #e74c3c;
+}
+
+.reviews-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.review-item {
+  padding: 16px;
+  border-radius: 8px;
+  background-color: #f8f9fa;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+}
+
+.review-header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 8px;
+}
+
+.reviewer-name {
+  font-weight: 500;
+  color: #2c3e50;
+}
+
+.review-date {
+  color: #7f8c8d;
+  font-size: 14px;
+}
+
+.review-comment {
+  margin-top: 10px;
+  color: #34495e;
+  line-height: 1.5;
+}
+
+/* Report button styles */
+.modal-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.report-btn {
+  background: none;
+  border: 1px solid #e74c3c;
+  color: #e74c3c;
+  font-size: 14px;
+  padding: 6px 10px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.report-btn:hover {
+  background-color: #fdf0ed;
+}
+
+.report-btn-confirm {
+  background-color: #e74c3c;
+  border: none;
+  color: white;
+  padding: 10px 16px;
+  border-radius: 4px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.report-btn-confirm:hover {
+  background-color: #c0392b;
+}
+
+.report-btn-confirm:disabled {
+  background-color: #f8d7da;
+  cursor: not-allowed;
+}
+
+.report-result {
+  padding: 10px;
+  margin: 0 0 15px;
+  border-radius: 4px;
+  font-size: 14px;
+}
+
+.modal-body {
+  padding: 20px;
+  color: #2c3e50;
+}
+
+.modal-body p {
+  margin: 10px 0;
+  line-height: 1.5;
+}

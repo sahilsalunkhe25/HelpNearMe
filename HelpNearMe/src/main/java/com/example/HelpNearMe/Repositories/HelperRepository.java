@@ -11,6 +11,8 @@ import java.util.List;
 public interface HelperRepository extends JpaRepository<Helper, Long>
 {
     List<Helper> findByPincode(String pincode);
-    List<Helper> findByCity(String city);
-    List<Helper> findByProfession(String profession);
+    List<Helper> findByCityIgnoreCase(String city);
+    List<Helper> findByPincodeAndProfession(String pincode, String profession);
+    List<Helper> findByTownIgnoreCase(String town);
+
 }
