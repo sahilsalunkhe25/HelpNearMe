@@ -115,9 +115,9 @@ const Homepage = () => {
   const handleSearch = async () => {
     try {
       let url = `${API_BASE}/helpers/pincode/${pincode}`;
-      if (profession) {
-        url += `/profession/${encodeURIComponent(profession)}`;
-      }
+     if (profession && profession !== 'All') {
+      url += `/profession/${encodeURIComponent(profession)}`;
+    }
   
       const res = await fetch(url);
       if (!res.ok) throw new Error('Failed to fetch');
@@ -240,7 +240,8 @@ const Homepage = () => {
             minWidth: '180px',
           }}
         >
-         <option value="">Filter by category</option>
+        <option value="" style={{ fontWeight: 'bold' }}>Filter By Category</option>
+        <option value="All">🌐 All Categories</option>
         <option value="Electrician">⚡ Electrician</option>
         <option value="Plumber">🚿 Plumber</option>
         <option value="Carpenter">🪚 Carpenter</option>
@@ -373,25 +374,26 @@ const Homepage = () => {
       </section>
 
       <section className="features">
-        <h2>Why Choose HelpNearMe?</h2>
-        <div className="feature-cards">
-          <div className="card">
-            <div className="card-icon">⚡</div>
-            <h3>Easy Access</h3>
-            <p>Quickly connect with service providers nearby.</p>
-          </div>
-          <div className="card">
-            <div className="card-icon">🔒</div>
-            <h3>No Login Needed</h3>
-            <p>Users can freely add and explore without creating an account.</p>
-          </div>
-          <div className="card">
-            <div className="card-icon">👑</div>
-            <h3>Admin Control</h3>
-            <p>Manage and verify helper listings with ease.</p>
-          </div>
-        </div>
-      </section>
+  <h2>Why Choose HelpNearMe?</h2>
+  <div className="feature-cards">
+    <div className="card">
+      <div className="card-icon">🔒</div>
+      <h3>No Login Needed</h3>
+      <p>Users can freely add and explore without creating an account.</p>
+    </div>
+    <div className="card">
+      <div className="card-icon">🤝</div>
+      <h3>Empowering Laborers</h3>
+      <p>Helping hardworking individuals connect with local job opportunities to earn a better livelihood.</p>
+    </div>
+    <div className="card">
+      <div className="card-icon">🏘️</div>
+      <h3>Building Strong Communities</h3>
+      <p>Facilitating easy access to trusted helpers within your neighborhood to support each other.</p>
+    </div>
+  </div>
+</section>
+
 
       {/* New Success Stories Section */}
       <section className="success-stories">
@@ -487,7 +489,7 @@ const Homepage = () => {
               <div className="step-number">1</div>
               <div className="step-content">
                 <h3>Enter Your Pincode</h3>
-                <p>Search for helpers in your area by entering your 6-digit pincode</p>
+                <p>Find helpers nearby by entering your 6-digit pincode. Use the category filter to refine your search.</p>
               </div>
             </div>
             <div className="step-connector"></div>
