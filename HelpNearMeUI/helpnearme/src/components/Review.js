@@ -44,12 +44,14 @@ const ReportConfirmationModal = ({ helperId, helperName, onClose, onSuccess }) =
         }
       });
       
-      if (!response.ok) {
-        throw new Error('Failed to submit report');
-      }
-      
-      const result = await response.text();
-      onSuccess(result);
+    const resultText = await response.text();
+
+    if (!response.ok) {
+      // Show the actual message sent by the server
+      throw new Error(resultText);
+    }
+
+    onSuccess(resultText);
     } catch (err) {
       setError(err.message || 'An error occurred while submitting your report');
     } finally {
