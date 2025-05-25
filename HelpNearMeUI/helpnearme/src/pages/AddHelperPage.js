@@ -88,7 +88,7 @@ const AddHelperPage = () => {
     <div className="add-helper-page">
       <div className="add-helper-hero">
         <div className="add-helper-hero-content">
-          <h1>Add a Helper</h1>
+          <h1>Know an Electrician, Plumber or a Local Help near you?</h1>
           <p>Help improve someone's livelihood by adding them to our network</p>
         </div>
       </div>

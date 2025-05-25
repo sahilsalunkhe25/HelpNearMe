@@ -20,6 +20,8 @@ const Homepage = () => {
   const [showAddReviewModal, setShowAddReviewModal] = useState(false);
   const [showReviewsModal, setShowReviewsModal] = useState(false);
   const [selectedHelper, setSelectedHelper] = useState(null);
+  const [visible, setVisible] = useState(true);
+
 
   const API_BASE = 'http://localhost:8081';
   
@@ -152,6 +154,7 @@ const Homepage = () => {
           <div className="hero-bg-slide"></div>
         </div>
         <div className="hero-overlay">
+
           <div className="hero-content">
             <div className="hero-decorative hero-decorative-topleft"></div>
             <div className="hero-decorative hero-decorative-bottomright"></div>
@@ -339,8 +342,8 @@ const Homepage = () => {
                 <div className="hero-badge-icon">★</div>
                 <span>No Money Involved</span>
               </div>
-            </div>
-          </div>
+            </div>                        {/* Add Helper Call-to-Action Integration */}
+        </div>
         </div>
         <div className="hero-scroll-indicator">
           <div className="hero-scroll-arrow"></div>
