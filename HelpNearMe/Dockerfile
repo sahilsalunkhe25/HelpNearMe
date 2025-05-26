@@ -1,14 +1,24 @@
-# Use Eclipse Temurin JDK 21 base image
-FROM eclipse-temurin:21-jdk-alpine
-
-# Set working directory inside the container
+# Stage 1: Build stage
+FROM eclipse-temurin:21-jdk-alpine AS builder
 WORKDIR /app
 
-# Copy the built JAR file from the target directory
-COPY build/libs/*.jar app.jar
+# Copy gradle files and source code
+COPY gradlew .
+COPY gradle gradle
+COPY build.gradle .
+COPY settings.gradle .
+COPY src src
 
-# Expose the port Spring Boot runs on
+# Run build to create the jar
+RUN ./gradlew build --no-daemon
+
+# Stage 2: Run stage
+FROM eclipse-temurin:21-jdk-alpine
+WORKDIR /app
+
+# Copy jar from builder stage
+COPY --from=builder /app/build/libs/*.jar app.jar
+
 EXPOSE 8080
 
-# Start the Spring Boot app
 ENTRYPOINT ["java", "-jar", "app.jar"]
