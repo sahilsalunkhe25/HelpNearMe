@@ -9,7 +9,8 @@ const Header = () => {
         <h1 className="logo">HelpNearMe</h1>
         <nav className="nav-links">
           <Link to="/">Home</Link>
-          <Link to="/add-helper">Add Your Contacts</Link>
+          <Link to="/purpose">Our Purpose</Link>
+          <Link to="/add-helper">Click here to make someone's day :)</Link>
         </nav>
       </div>
     </header>
