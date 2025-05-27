@@ -23,7 +23,7 @@ const Homepage = () => {
   const [visible, setVisible] = useState(true);
 
 
-  const API_BASE = 'http://localhost:8081';
+  const API_BASE = 'https://helpnearme.onrender.com';
   
   // Success stories data
   const successStories = [

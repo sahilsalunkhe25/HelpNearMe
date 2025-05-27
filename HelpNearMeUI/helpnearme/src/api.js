@@ -1,3 +1,3 @@
-const API_BASE = "http://localhost:8081";
+const API_BASE = "https://helpnearme.onrender.com";
 
 export default API_BASE;

@@ -30,7 +30,7 @@ const ReportConfirmationModal = ({ helperId, helperName, onClose, onSuccess }) =
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [error, setError] = useState('');
   
-  const API_BASE = 'http://localhost:8081';
+  const API_BASE = 'https://helpnearme.onrender.com';
 
   const handleSubmit = async () => {
     setIsSubmitting(true);
@@ -109,7 +109,7 @@ const AddReviewModal = ({ helperId, helperName, onClose, onSuccess }) => {
   const [showReportModal, setShowReportModal] = useState(false);
   const [reportResult, setReportResult] = useState('');
   
-  const API_BASE = 'http://localhost:8081';
+  const API_BASE = 'https://helpnearme.onrender.com';
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -249,7 +249,7 @@ const ReviewsModal = ({ helperId, helperName, onClose }) => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
   
-  const API_BASE = 'http://localhost:8081';
+  const API_BASE = 'https://helpnearme.onrender.com';
   
   useEffect(() => {
     const fetchReviews = async () => {
