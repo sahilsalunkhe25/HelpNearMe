@@ -34,7 +34,7 @@ const AddHelperPage = () => {
     setError('');
     
     try {
-      const API_BASE = 'http://localhost:8081'; 
+      const API_BASE = 'https://helpnearme.onrender.com'; 
       const res = await fetch(`${API_BASE}/helpers/addhelper`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
