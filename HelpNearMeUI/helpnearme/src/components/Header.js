@@ -6,7 +6,9 @@ const Header = () => {
   return (
     <header className="custom-header">
       <div className="container">
-        <h1 className="logo">HelpNearMe</h1>
+        <h1 className="logo">
+          <Link to="/">HelpNearMe</Link>
+        </h1>
         <nav className="nav-links">
           <Link to="/">Home</Link>
           <Link to="/purpose">Our Purpose</Link>
