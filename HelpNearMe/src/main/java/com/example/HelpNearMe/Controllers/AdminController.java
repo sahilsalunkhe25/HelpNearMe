@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Optional;
@@ -37,6 +38,7 @@ public class AdminController {
         return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Invalid credentials");
     }
 
+    @Transactional
     @DeleteMapping("/helper/{id}")
     public ResponseEntity<String> deleteHelperById(@PathVariable Long id) {
         if (!_helperRepository.existsById(id)) {
