@@ -9,6 +9,7 @@ import com.example.HelpNearMe.Repositories.ReviewRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.*;
 import java.util.stream.Collectors;
@@ -19,7 +20,7 @@ public class HelperManager implements IHelperManager {
 
     private final HelperRepository _helperRepository;
     private final ReviewRepository _reviewRepository;
-    private HelperReportRepository _helperReportRepository;
+    private final HelperReportRepository _helperReportRepository;
 
 
     @Autowired
@@ -29,6 +30,7 @@ public class HelperManager implements IHelperManager {
         _helperReportRepository = helperReportRepository;
     }
 
+    @Transactional(readOnly = true)
     public List<Helper> getHelpersByPincode(String pincode) {
         List<Helper> helpers = _helperRepository.findByPincode(pincode);
         helpers.sort((h1, h2) -> {
@@ -39,14 +41,17 @@ public class HelperManager implements IHelperManager {
         return helpers;
     }
 
+    @Transactional
     public Helper addHelper(Helper helper) {
         return _helperRepository.save(helper);
     }
 
+    @Transactional(readOnly = true)
     public Optional<Helper> getHelperById(Long id) {
         return _helperRepository.findById(id);
     }
 
+    @Transactional
     public ResponseEntity<Review> addReview(Long id, Review review) {
         Optional<Helper> helperOpt = _helperRepository.findById(id);
         if (helperOpt.isEmpty()) return ResponseEntity.notFound().build();
@@ -70,14 +75,17 @@ public class HelperManager implements IHelperManager {
         return _helperRepository.findByTownIgnoreCase(town);
     }
 
+    @Transactional(readOnly = true)
     public List<Helper> getAllHelpers() {
         return _helperRepository.findAll();
     }
 
+    @Transactional(readOnly = true)
     public List<Review> getReviewsByHelperId(Long helperId) {
         return _reviewRepository.findByHelperId(helperId);
     }
 
+    @Transactional(readOnly = true)
     public List<Helper> getHelpersByProfession(String pincode, String profession) {
         return _helperRepository.findByPincode(pincode).stream()
                 .filter(helper -> Arrays.asList(helper.getProfession().split(","))
@@ -86,11 +94,13 @@ public class HelperManager implements IHelperManager {
                 .collect(Collectors.toList());
     }
 
+    @Transactional
     public void deleteHelperById(Long helperId) {
         _helperRepository.deleteById(helperId);
     }
 
     @Override
+    @Transactional
     public ResponseEntity<String> reportHelperById(Long helperId, String ipAddress) {
         Optional<Helper> optionalHelper = _helperRepository.findById(helperId);
         if (optionalHelper.isEmpty()) {
