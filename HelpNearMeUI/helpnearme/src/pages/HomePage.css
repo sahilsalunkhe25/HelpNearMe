@@ -44,6 +44,14 @@ body {
   text-align: center;
   margin-top: 4rem;
 }
+.custom-footer a {
+  color: #1c6758; /* same as footer background */
+  text-decoration: none;
+  background: none;
+  border: none;
+  pointer-events: auto; /* ensures it's still clickable */
+}
+
 
 /* Hero Section */
 .hero {
@@ -1213,16 +1221,193 @@ body {
     visibility: hidden;
   }
 }
+/* Add these responsive styles to your existing CSS */
 
+/* Mobile Responsive Fixes */
+/* Replace the previous mobile CSS with this improved version */
 
+/* Mobile Responsive Fixes - Improved Layout */
+/* Pure CSS Mobile Fix - Add this to your existing CSS */
 
+@media (max-width: 768px) {
+  .hero {
+    min-height: 100vh;
+    height: auto;
+  }
 
+  .hero-content {
+    padding: 1rem !important;
+    max-width: 100% !important;
+  }
 
+  .hero-title {
+    font-size: 2.2rem !important;
+    margin-bottom: 0.8rem !important;
+    line-height: 1.3 !important;
+  }
 
+  .hero-subtitle {
+    font-size: 1.1rem !important;
+    margin-bottom: 2rem !important;
+    padding: 0 1rem !important;
+  }
 
+  .hero-decorative {
+    display: none !important;
+  }
 
-  
+  /* Target the search container directly with !important */
+  .hero-content > div[style*="display: flex"] {
+    display: block !important;
+    background: white !important;
+    border-radius: 20px !important;
+    padding: 20px !important;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15) !important;
+    max-width: 100% !important;
+    margin: auto !important;
+    gap: unset !important;
+    position: relative !important;
+    z-index: 10 !important;
+  }
 
+  /* Create a flex container for input and dropdown */
+  .hero-content > div[style*="display: flex"]::before {
+    content: '';
+    display: block;
+    margin-bottom: 15px;
+  }
 
+  /* Target input wrapper */
+  .hero-content > div[style*="display: flex"] > div[style*="flex: 1"] {
+    display: inline-block !important;
+    width: 58% !important;
+    flex: none !important;
+    background: #f7f7f7 !important;
+    border-radius: 25px !important;
+    padding: 8px 16px !important;
+    margin-right: 2% !important;
+    margin-bottom: 15px !important;
+    vertical-align: top !important;
+  }
 
+  /* Target dropdown wrapper */
+  .hero-content > div[style*="display: flex"] > div[style*="position: relative"] {
+    display: inline-block !important;
+    width: 40% !important;
+    background-color: #f7f7f7 !important;
+    border-radius: 25px !important;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05) !important;
+    padding: 0 6px !important;
+    margin-bottom: 15px !important;
+    vertical-align: top !important;
+  }
 
+  /* Target the input field */
+  .hero-content > div[style*="display: flex"] input {
+    background: transparent !important;
+    border: none !important;
+    font-size: 0.9rem !important;
+    color: #333 !important;
+    outline: none !important;
+    width: 100% !important;
+    padding: 8px 0 !important;
+  }
+
+  /* Target the select dropdown */
+  .hero-content > div[style*="display: flex"] select {
+    background: transparent !important;
+    border: none !important;
+    color: #333 !important;
+    font-weight: 500 !important;
+    font-size: 0.85rem !important;
+    padding: 10px 25px 10px 4px !important;
+    appearance: none !important;
+    cursor: pointer !important;
+    outline: none !important;
+    min-width: 100% !important;
+    width: 100% !important;
+  }
+
+  /* Target search button */
+  .hero-content > div[style*="display: flex"] > button {
+    display: block !important;
+    width: 100% !important;
+    background-color: #0d4b3e !important;
+    color: #fff !important;
+    border: none !important;
+    border-radius: 25px !important;
+    padding: 15px 28px !important;
+    font-weight: 600 !important;
+    font-size: 1rem !important;
+    cursor: pointer !important;
+    box-shadow: 0 8px 15px rgba(13, 75, 62, 0.25) !important;
+    transition: all 0.3s ease !important;
+    text-align: center !important;
+    justify-content: center !important;
+    align-items: center !important;
+    gap: 8px !important;
+    margin-top: 0 !important;
+  }
+
+  .hero-badges {
+    gap: 1rem !important;
+    margin-top: 2rem !important;
+    flex-wrap: wrap !important;
+  }
+
+  .hero-badge {
+    padding: 0.6rem 1rem !important;
+    font-size: 0.9rem !important;
+  }
+
+  .hero-badge-icon {
+    width: 20px !important;
+    height: 20px !important;
+    font-size: 0.8rem !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-title {
+    font-size: 1.8rem !important;
+  }
+
+  .hero-subtitle {
+    font-size: 1rem !important;
+  }
+
+  /* Stack input and dropdown vertically on very small screens */
+  .hero-content > div[style*="display: flex"] > div[style*="flex: 1"] {
+    width: 100% !important;
+    margin-right: 0 !important;
+    margin-bottom: 10px !important;
+  }
+
+  .hero-content > div[style*="display: flex"] > div[style*="position: relative"] {
+    width: 100% !important;
+    margin-bottom: 15px !important;
+  }
+
+  .hero-content > div[style*="display: flex"] input {
+    font-size: 0.85rem !important;
+  }
+
+  .hero-content > div[style*="display: flex"] select {
+    font-size: 0.8rem !important;
+  }
+
+  .hero-content > div[style*="display: flex"] > button {
+    font-size: 0.95rem !important;
+    padding: 14px 20px !important;
+  }
+
+  .hero-badges {
+    flex-direction: column !important;
+    align-items: center !important;
+    gap: 0.8rem !important;
+  }
+
+  .hero-badge {
+    width: fit-content !important;
+  }
+}
