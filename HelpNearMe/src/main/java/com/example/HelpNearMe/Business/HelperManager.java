@@ -7,6 +7,8 @@ import com.example.HelpNearMe.Repositories.HelperReportRepository;
 import com.example.HelpNearMe.Repositories.HelperRepository;
 import com.example.HelpNearMe.Repositories.ReviewRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.CacheEvict;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -22,7 +24,6 @@ public class HelperManager implements IHelperManager {
     private final ReviewRepository _reviewRepository;
     private final HelperReportRepository _helperReportRepository;
 
-
     @Autowired
     public HelperManager(HelperRepository helperRepository, ReviewRepository reviewRepository, HelperReportRepository helperReportRepository) {
         _helperRepository = helperRepository;
@@ -30,6 +31,8 @@ public class HelperManager implements IHelperManager {
         _helperReportRepository = helperReportRepository;
     }
 
+    @Override
+    @Cacheable(value = "helpersByPincode", key = "#pincode")
     @Transactional(readOnly = true)
     public List<Helper> getHelpersByPincode(String pincode) {
         List<Helper> helpers = _helperRepository.findByPincode(pincode);
@@ -41,16 +44,21 @@ public class HelperManager implements IHelperManager {
         return helpers;
     }
 
+    @Override
+    @CacheEvict(value = {"helpersByPincode", "allHelpers", "helpersByCity", "helpersByTown"}, allEntries = true)
     @Transactional
     public Helper addHelper(Helper helper) {
         return _helperRepository.save(helper);
     }
 
+    @Override
     @Transactional(readOnly = true)
     public Optional<Helper> getHelperById(Long id) {
         return _helperRepository.findById(id);
     }
 
+    @Override
+    @CacheEvict(value = {"helpersByPincode", "allHelpers", "helpersByCity", "helpersByTown"}, allEntries = true)
     @Transactional
     public ResponseEntity<Review> addReview(Long id, Review review) {
         Optional<Helper> helperOpt = _helperRepository.findById(id);
@@ -67,24 +75,32 @@ public class HelperManager implements IHelperManager {
         return ResponseEntity.ok(review);
     }
 
+    @Override
+    @Cacheable(value = "helpersByCity", key = "#city.toLowerCase()")
     public List<Helper> getHelpersByCity(String city) {
         return _helperRepository.findByCityIgnoreCase(city);
     }
 
+    @Override
+    @Cacheable(value = "helpersByTown", key = "#town.toLowerCase()")
     public List<Helper> getHelpersByTown(String town) {
         return _helperRepository.findByTownIgnoreCase(town);
     }
 
+    @Override
+    @Cacheable("allHelpers")
     @Transactional(readOnly = true)
     public List<Helper> getAllHelpers() {
         return _helperRepository.findAll();
     }
 
+    @Override
     @Transactional(readOnly = true)
     public List<Review> getReviewsByHelperId(Long helperId) {
         return _reviewRepository.findByHelperId(helperId);
     }
 
+    @Override
     @Transactional(readOnly = true)
     public List<Helper> getHelpersByProfession(String pincode, String profession) {
         return _helperRepository.findByPincode(pincode).stream()
@@ -94,12 +110,15 @@ public class HelperManager implements IHelperManager {
                 .collect(Collectors.toList());
     }
 
+    @Override
+    @CacheEvict(value = {"helpersByPincode", "allHelpers", "helpersByCity", "helpersByTown"}, allEntries = true)
     @Transactional
     public void deleteHelperById(Long helperId) {
         _helperRepository.deleteById(helperId);
     }
 
     @Override
+    @CacheEvict(value = {"helpersByPincode", "allHelpers", "helpersByCity", "helpersByTown"}, allEntries = true)
     @Transactional
     public ResponseEntity<String> reportHelperById(Long helperId, String ipAddress) {
         Optional<Helper> optionalHelper = _helperRepository.findById(helperId);
