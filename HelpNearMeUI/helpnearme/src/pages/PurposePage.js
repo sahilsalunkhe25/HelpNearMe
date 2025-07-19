@@ -611,7 +611,7 @@ const PurposePage = () => {
       </section>
 
       {/* Stats Section */}
-      <section className="stats-section">
+      {/* <section className="stats-section">
         <div className="stats-container">
           <div className="stat-card">
             <span className="stat-number">{stats.helpers.toLocaleString()}+</span>
@@ -626,7 +626,7 @@ const PurposePage = () => {
             <span className="stat-label">Cities Covered</span>
           </div>
         </div>
-      </section>
+      </section> */}
 
       {/* Mission Section */}
       <section className="mission-section">
