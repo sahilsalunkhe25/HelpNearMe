@@ -441,7 +441,7 @@ const Homepage = () => {
           HelpNearMe is not just a service finder—it's a step towards supporting the local workforce by connecting
           skilled individuals with those in need.
         </p>
-        <div className="community-grid">
+        {/* <div className="community-grid">
           <div className="community-stat">
             <div className="stat-number">5000+</div>
             <div className="stat-label">Registered Helpers</div>
@@ -454,7 +454,7 @@ const Homepage = () => {
             <div className="stat-number">10,000+</div>
             <div className="stat-label">Jobs Completed</div>
           </div>
-        </div>
+        </div> */}
         <img
           className="community-image"
           src="https://images.unsplash.com/photo-1597058712635-3182d1eacc1e?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
